@@ -11,7 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<User>? users;
+  // List<User>? users;
+  List<Post>? posts;
   var isLoaded = false;
 
   @override
@@ -23,8 +24,8 @@ class _HomeState extends State<Home> {
   }
 
   getData() async {
-    users = await RemoteService().getUsers();
-    if (users != null) {
+    posts = await RemoteService().getPosts();
+    if (posts != null) {
       setState(() {
         isLoaded = true;
       });
@@ -35,7 +36,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Users'),
+        // title: const Text('Users'),
+        title: const Text('Posts'),
       ),
       body: Visibility(
         visible: isLoaded,
@@ -43,38 +45,57 @@ class _HomeState extends State<Home> {
           child: CircularProgressIndicator(),
         ),
         child: ListView.builder(
-          itemCount: users?.length,
+          itemCount: posts?.length,
           itemBuilder: (context, index) {
-            return SizedBox(
-              child: Column(
+            return Container(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 children: [
-                  Text(
-                    users![index].name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[300],
+                    ),
                   ),
-                  Text(
-                    users![index].gender ?? "",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                  const SizedBox(
+                    width: 16,
                   ),
-                  Text(
-                    users![index].birthdate,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w400),
-                  ),
-                  Text(
-                    users![index].ipv4,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          posts![index].title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
+                        Text(
+                          posts![index].body ?? "",
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w400),
+                        ),
+                        // Text(
+                        //   posts![index].birthdate,
+                        //   maxLines: 2,
+                        //   overflow: TextOverflow.ellipsis,
+                        //   style: const TextStyle(
+                        //       fontSize: 14, fontWeight: FontWeight.w400),
+                        // ),
+                        // Text(
+                        //   users![index].ipv4,
+                        //   maxLines: 2,
+                        //   overflow: TextOverflow.ellipsis,
+                        //   style: const TextStyle(
+                        //       fontSize: 14, fontWeight: FontWeight.w400),
+                        // ),
+                      ],
+                    ),
                   ),
                 ],
               ),
