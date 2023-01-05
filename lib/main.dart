@@ -62,7 +62,7 @@ class _MainState extends State<Main> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style15,
+      navBarStyle: NavBarStyle.style9,
       backgroundColor: AppColors.royalBlue,
     );
   }
@@ -82,7 +82,7 @@ List<PersistentBottomNavBarItem> navBarItems() {
       iconSize: 22,
       textStyle: const TextStyle(fontSize: 12),
       title: 'Home',
-      activeColorPrimary: AppColors.greyDivider,
+      activeColorPrimary: AppColors.primaryAppColor3,
       inactiveColorPrimary: AppColors.darkAccent,
     ),
     PersistentBottomNavBarItem(
@@ -90,7 +90,7 @@ List<PersistentBottomNavBarItem> navBarItems() {
       iconSize: 22,
       textStyle: const TextStyle(fontSize: 12),
       title: 'Todo',
-      activeColorPrimary: AppColors.greyDivider,
+      activeColorPrimary: AppColors.primaryAppColor3,
       inactiveColorPrimary: AppColors.darkAccent,
     ),
   ];
