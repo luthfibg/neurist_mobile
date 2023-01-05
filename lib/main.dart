@@ -18,9 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: DoubleBack(
         background: AppColors.darkAccent,
         child: const Main(),
@@ -62,8 +60,8 @@ class _MainState extends State<Main> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle.style15,
-      backgroundColor: AppColors.royalBlue,
+      navBarStyle: NavBarStyle.style9,
+      backgroundColor: AppColors.darkAccent,
     );
   }
 
@@ -82,16 +80,16 @@ List<PersistentBottomNavBarItem> navBarItems() {
       iconSize: 22,
       textStyle: const TextStyle(fontSize: 12),
       title: 'Home',
-      activeColorPrimary: AppColors.greyDivider,
-      inactiveColorPrimary: AppColors.darkAccent,
+      activeColorPrimary: AppColors.primaryAppColor3,
+      inactiveColorPrimary: AppColors.primaryAppColor2,
     ),
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.list_bullet),
       iconSize: 22,
       textStyle: const TextStyle(fontSize: 12),
       title: 'Todo',
-      activeColorPrimary: AppColors.greyDivider,
-      inactiveColorPrimary: AppColors.darkAccent,
+      activeColorPrimary: AppColors.primaryAppColor3,
+      inactiveColorPrimary: AppColors.primaryAppColor2,
     ),
   ];
 }

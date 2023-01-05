@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neurist_mobile/customs/theme.dart';
 import 'package:neurist_mobile/services/remote_service.dart';
 
 import '../models/user.dart';
@@ -35,6 +36,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: AppColors.darkAccent,
       appBar: AppBar(
         // title: const Text('Users'),
         title: const Text('Posts'),
@@ -56,7 +58,7 @@ class _HomeState extends State<Home> {
                     width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey[300],
+                      color: AppColors.primaryAppColor15,
                     ),
                   ),
                   const SizedBox(
@@ -70,15 +72,21 @@ class _HomeState extends State<Home> {
                           posts![index].title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.primaryAppColor2,
+                          ),
                         ),
                         Text(
                           posts![index].body ?? "",
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.primaryAppColor2,
+                          ),
                         ),
                         // Text(
                         //   posts![index].birthdate,
