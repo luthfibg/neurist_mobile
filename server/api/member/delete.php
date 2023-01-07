@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: X-Requested-With');
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../../config/database.php";
-include_once "../../data/product.php";
+include_once "../../data/member.php";
 
 $request = $_SERVER['REQUEST_METHOD'];
 
