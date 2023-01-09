@@ -18,3 +18,4 @@ $service->id = isset($_GET['id']) ? $_GET['id'] : die();
 $service->get();
 
 $response = [];
+

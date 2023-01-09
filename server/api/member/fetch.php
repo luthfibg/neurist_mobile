@@ -17,3 +17,41 @@ $stmt = $member->fetch();
 $count = $stmt->rowCount();
 
 $response = [];
+
+if ($request == 'GET') {
+    if ($count > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            extract($row);
+            $data[] = array(
+                "id" => $id,
+                "name" => $name,
+                "age" => $age,
+                "address" => $address,
+                "service_id" => $service_id,
+                "phone" => $phone,
+                "email" => $email,
+            );
+        }
+        $response = array(
+            'status' => array(
+                'message' => 'success', 'code' => http_response_code(200)
+            ), 'data' => $data
+        );
+    } else {
+        http_response_code(404);
+        $response = array(
+            'status' => array(
+                'message' => 'no data found', 'code' => http_response_code()
+            )
+        );
+    }
+} else {
+    http_response_code(405);
+    $response = array(
+        'status' => array(
+            'message' => 'method not allowed', 'code' => http_response_code()
+        )
+    );
+}
+
+echo json_encode($response);
