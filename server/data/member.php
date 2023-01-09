@@ -48,16 +48,54 @@ class Member
     function add()
     {
         $query = "INSERT INTO " . $this->table . " SET id=:id, name=:name, age=:age, address=:address, service_id=:service_id, phone=:phone, email=:email";
-        
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam('id', $this->id);
+        $stmt->bindParam('name', $this->name);
+        $stmt->bindParam('age', $this->age);
+        $stmt->bindParam('address', $this->address);
+        $stmt->bindParam('service_id', $this->service_id);
+        $stmt->bindParam('phone', $this->phone);
+        $stmt->bindParam('email', $this->email);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
     function update()
     {
+        $query = "UPDATE " . $this->table . " SET name=:name, age=:age, address=:address, service_id=:service_id, phone=:phone, email=:email WHERE id=:id";
 
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam('id', $this->id);
+        $stmt->bindParam('name', $this->name);
+        $stmt->bindParam('age', $this->age);
+        $stmt->bindParam('address', $this->address);
+        $stmt->bindParam('service_id', $this->service_id);
+        $stmt->bindParam('phone', $this->phone);
+        $stmt->bindParam('email', $this->email);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 
     function delete()
     {
-        
+        $query = "DELETE FROM " . $this->table . " WHERE id=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
     }
 }
