@@ -34,7 +34,7 @@ class Member
 
         $stmt->execute();
 
-        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        $member = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $this->id = $member['id'];
         $this->name = $member['name'];
