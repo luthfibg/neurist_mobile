@@ -20,33 +20,24 @@ $response = [];
 
 if ($request == 'POST') {
     if (
-        !empty($data->id) &&
-        !empty($data->name) &&
-        !empty($data->age) &&
-        !empty($data->address) &&
         !empty($data->service_id) &&
-        !empty($data->phone) &&
-        !empty($data->email)
+        !empty($data->service_name) &&
+        !empty($data->service_address) &&
+        !empty($data->service_phone)
     ) {
-        $member->id = $data->id;
-        $member->name = $data->name;
-        $member->age = $data->age;
-        $member->address = $data->address;
-        $member->service_id = $data->service_id;
-        $member->phone = $data->phone;
-        $member->email = $data->email;
+        $service->service_id = $data->service_id;
+        $service->service_name = $data->service_name;
+        $service->service_address = $data->service_address;
+        $service->service_phone = $data->service_phone;
 
         $data = array(
-            'id' => $member->id,
-            'name' => $member->name,
-            'age' => $member->age,
-            'address' => $member->address,
-            'service_id' => $member->service_id,
-            'phone' => $member->phone,
-            'email' => $member->email,
+            'service_id' => $service->service_id,
+            'service_name' => $service->service_name,
+            'service_address' => $service->service_address,
+            'service_phone' => $service->service_phone,
         );
 
-        if ($member->add()) {
+        if ($service->add()) {
             $response = array(
                 'status' => array(
                     'message' => 'success', 'code' => (http_response_code(200))
@@ -55,7 +46,7 @@ if ($request == 'POST') {
         } else {
             http_response_code(400);
             $response = array(
-                'message' => 'add failed',
+                'message' => 'add service failed',
                 'code' => http_response_code()
             );
         }
@@ -63,7 +54,7 @@ if ($request == 'POST') {
         http_response_code(400);
         $response = array(
             'status' => array(
-                'message' => 'add failed - wrong parameter', 'code' => http_response_code()
+                'message' => 'add failed - wrong parameter to service', 'code' => http_response_code()
             )
         );
     }
@@ -71,7 +62,7 @@ if ($request == 'POST') {
     http_response_code(405);
     $response = array(
         'status' => array(
-            'message' => 'method not allowed', 'code' => http_response_code()
+            'message' => 'service method not allowed', 'code' => http_response_code()
         )
     );
 }

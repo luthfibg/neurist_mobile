@@ -58,7 +58,7 @@ class Service
 
     function update()
     {
-        $query = "UPDATE " . $this->table . " SET service_name=:service_name, service_address=:service_address, service_phone=:service_phone, WHERE service_id=:service_id";
+        $query = "UPDATE " . $this->table . " SET service_name=:service_name, service_address=:service_address, service_phone=:service_phone WHERE service_id=:service_id";
 
         $stmt = $this->conn->prepare($query);
 
