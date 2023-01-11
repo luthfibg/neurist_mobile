@@ -13,7 +13,7 @@ class Member
     private $conn;
     private $table = 'members';
 
-    public function __construct($conn)
+    function __construct($conn)
     {
         $this->conn = $conn;
     }
