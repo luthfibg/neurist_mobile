@@ -45,7 +45,7 @@ class MemberCardWidget extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            member.age,
+            member.age.toString(),
             style: const TextStyle(fontSize: 14),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

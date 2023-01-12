@@ -9,11 +9,11 @@ class MemberEntity {
     required this.email,
   });
 
-  final String id;
+  final int id;
   final String name;
-  final String age;
+  final int age;
   final String address;
-  final String serviceId;
+  final int serviceId;
   final String phone;
   final String email;
 }
