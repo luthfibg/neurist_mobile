@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:neurist_mobile/data/models/device_model.dart';
 
@@ -16,6 +18,7 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
       List<DeviceModel> listDevice = [];
       final response = await dio
           .get('http://localhost/neurist_mobile_server/api/device/fetch');
+      log('response: ${response.data}');
       for (var data in response.data['data']) {
         DeviceModel device = DeviceModel.fromJson(data);
         listDevice.add(device);
