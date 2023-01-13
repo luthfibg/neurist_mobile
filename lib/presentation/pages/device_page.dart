@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
-// import 'package:neurist_mobile/presentation/widgets/device_card_widget.dart';
+import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
+import 'package:neurist_mobile/presentation/widgets/device_card_widget.dart';
 
 class DevicePage extends StatelessWidget {
   const DevicePage({super.key});
