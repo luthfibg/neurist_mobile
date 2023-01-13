@@ -1,6 +1,6 @@
 import 'package:neurist_mobile/domain/entity/member_entity.dart';
 
-/// Instance of class [ProductEntity] which has the role of fetching and parsing data from/to json.
+/// Instance of class [MemberEntity] which has the role of fetching and parsing data from/to json.
 class MemberModel extends MemberEntity {
   /// Fetch data from json format.
   MemberModel.fromJson(Map<String, dynamic> json)
@@ -16,7 +16,7 @@ class MemberModel extends MemberEntity {
 
   /// Parse data into json format.
   Map<String, dynamic> toJson() => {
-        'weather': {
+        'data': {
           'id': id,
           'name': name,
           'age': age,

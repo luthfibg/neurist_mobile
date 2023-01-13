@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:neurist_mobile/data/data_sources/remote/member_remote_data_source.dart';
 import 'package:neurist_mobile/data/models/member_model.dart';
 import 'package:neurist_mobile/domain/repositories/member_repository.dart';
