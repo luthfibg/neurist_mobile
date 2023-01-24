@@ -11,4 +11,9 @@ class DeviceRepositoryImpl implements DeviceRepository {
   Future<List<DeviceModel>> fetch() async {
     return await deviceRemoteDataSource.fetch();
   }
+
+  @override
+  Future<bool> delete({required int id}) async {
+    return await deviceRemoteDataSource.delete(id: id);
+  }
 }
