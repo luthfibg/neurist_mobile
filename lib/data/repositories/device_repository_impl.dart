@@ -13,6 +13,13 @@ class DeviceRepositoryImpl implements DeviceRepository {
   }
 
   @override
+  Future<List<DeviceModel>> get(
+      {int? id, String? name, int? value, String? status}) async {
+    return await deviceRemoteDataSource.get(
+        id: id, name: name, value: value, status: status);
+  }
+
+  @override
   Future<bool> delete({required int id}) async {
     return await deviceRemoteDataSource.delete(id: id);
   }
