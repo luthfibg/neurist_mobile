@@ -50,6 +50,10 @@ class MemberCardWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
+          GestureDetector(
+            onTap: () {},
+            child: const Icon(Icons.textsms_outlined),
+          )
         ],
       ),
     );
