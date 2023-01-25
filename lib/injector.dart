@@ -4,6 +4,7 @@ import 'package:neurist_mobile/data/data_sources/remote/device_remote_data_sourc
 import 'package:neurist_mobile/data/repositories/device_repository_impl.dart';
 import 'package:neurist_mobile/domain/repositories/device_repository.dart';
 import 'package:neurist_mobile/domain/use_cases/fetch_device_use_case.dart';
+import 'package:neurist_mobile/domain/use_cases/delete_device_use_case.dart';
 import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
 
 /// Initialize sl as a service locator.
@@ -13,11 +14,15 @@ final sl = GetIt.instance;
 Future<void> init() async {
   // bloc
   // registering service locator for [DeviceBloc].
-  sl.registerFactory(() => DeviceBloc(fetchDeviceUseCase: sl()));
+  sl.registerFactory(
+      () => DeviceBloc(fetchDeviceUseCase: sl(), deleteDeviceUseCase: sl()));
 
   // usecases
   // registering service locator for [FetchDeviceUseCase].
   sl.registerLazySingleton(() => FetchDeviceUseCase(deviceRepository: sl()));
+
+  // registering service locator for [DeleteDeviceUseCase].
+  sl.registerLazySingleton(() => DeleteDeviceUseCase(deviceRepository: sl()));
 
   // repositories
   // registering service locator for [DeviceRepository].

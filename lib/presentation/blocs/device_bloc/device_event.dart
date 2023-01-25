@@ -15,3 +15,11 @@ class DeviceFetchEvent extends DeviceEvent {
   @override
   List<Object> get props => [];
 }
+
+class DeviceDeleteEvent extends DeviceEvent {
+  final int id;
+  const DeviceDeleteEvent({required this.id});
+
+  @override
+  List<Object> get props => [id];
+}
