@@ -6,7 +6,7 @@ class Member
     public $name;
     public $age;
     public $address;
-    public $service_id;
+    public $serviceId;
     public $phone;
     public $email;
 
@@ -40,21 +40,21 @@ class Member
         $this->name = $member['name'];
         $this->age = $member['age'];
         $this->address = $member['address'];
-        $this->service_id = $member['service_id'];
+        $this->serviceId = $member['serviceId'];
         $this->phone = $member['phone'];
         $this->email = $member['email'];
     }
 
     function add()
     {
-        $query = "INSERT INTO " . $this->table . " SET id=:id, name=:name, age=:age, address=:address, service_id=:service_id, phone=:phone, email=:email";
+        $query = "INSERT INTO " . $this->table . " SET id=:id, name=:name, age=:age, address=:address, serviceId=:serviceId, phone=:phone, email=:email";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam('id', $this->id);
         $stmt->bindParam('name', $this->name);
         $stmt->bindParam('age', $this->age);
         $stmt->bindParam('address', $this->address);
-        $stmt->bindParam('service_id', $this->service_id);
+        $stmt->bindParam('serviceId', $this->serviceId);
         $stmt->bindParam('phone', $this->phone);
         $stmt->bindParam('email', $this->email);
 
@@ -67,7 +67,7 @@ class Member
 
     function update()
     {
-        $query = "UPDATE " . $this->table . " SET name=:name, age=:age, address=:address, service_id=:service_id, phone=:phone, email=:email WHERE id=:id";
+        $query = "UPDATE " . $this->table . " SET name=:name, age=:age, address=:address, serviceId=:serviceId, phone=:phone, email=:email WHERE id=:id";
 
         $stmt = $this->conn->prepare($query);
 
@@ -75,7 +75,7 @@ class Member
         $stmt->bindParam('name', $this->name);
         $stmt->bindParam('age', $this->age);
         $stmt->bindParam('address', $this->address);
-        $stmt->bindParam('service_id', $this->service_id);
+        $stmt->bindParam('serviceId', $this->serviceId);
         $stmt->bindParam('phone', $this->phone);
         $stmt->bindParam('email', $this->email);
 

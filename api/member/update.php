@@ -26,7 +26,7 @@ if ($request == 'PUT') {
         !empty($data->name) &&
         !empty($data->age) &&
         !empty($data->address) &&
-        !empty($data->service_id) &&
+        !empty($data->serviceId) &&
         !empty($data->phone) &&
         !empty($data->email)
     ) {
@@ -34,7 +34,7 @@ if ($request == 'PUT') {
         $member->name = $data->name;
         $member->age = $data->age;
         $member->address = $data->address;
-        $member->service_id = $data->service_id;
+        $member->serviceId = $data->serviceId;
         $member->phone = $data->phone;
         $member->email = $data->email;
 
@@ -43,7 +43,7 @@ if ($request == 'PUT') {
             'name' => $member->name,
             'age' => $member->age,
             'address' => $member->address,
-            'service_id' => $member->service_id,
+            'serviceId' => $member->serviceId,
             'phone' => $member->phone,
             'email' => $member->email,
         );
@@ -51,8 +51,10 @@ if ($request == 'PUT') {
         if ($member->update()) {
             $response = array(
                 'status' => array(
-                    'message' => 'success', 'code' => (http_response_code(200))
-                ), 'data' => $data
+                    'message' => 'success',
+                    'code' => (http_response_code(200))
+                ),
+                'data' => $data
             );
         } else {
             http_response_code(400);

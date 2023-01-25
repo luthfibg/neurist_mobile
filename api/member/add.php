@@ -24,7 +24,7 @@ if ($request == 'POST') {
         !empty($data->name) &&
         !empty($data->age) &&
         !empty($data->address) &&
-        !empty($data->service_id) &&
+        !empty($data->serviceId) &&
         !empty($data->phone) &&
         !empty($data->email)
     ) {
@@ -32,7 +32,7 @@ if ($request == 'POST') {
         $member->name = $data->name;
         $member->age = $data->age;
         $member->address = $data->address;
-        $member->service_id = $data->service_id;
+        $member->serviceId = $data->serviceId;
         $member->phone = $data->phone;
         $member->email = $data->email;
 
@@ -41,7 +41,7 @@ if ($request == 'POST') {
             'name' => $member->name,
             'age' => $member->age,
             'address' => $member->address,
-            'service_id' => $member->service_id,
+            'serviceId' => $member->serviceId,
             'phone' => $member->phone,
             'email' => $member->email,
         );
@@ -49,8 +49,10 @@ if ($request == 'POST') {
         if ($member->add()) {
             $response = array(
                 'status' => array(
-                    'message' => 'success', 'code' => (http_response_code(200))
-                ), 'data' => $data
+                    'message' => 'success',
+                    'code' => (http_response_code(200))
+                ),
+                'data' => $data
             );
         } else {
             http_response_code(400);
@@ -63,7 +65,8 @@ if ($request == 'POST') {
         http_response_code(400);
         $response = array(
             'status' => array(
-                'message' => 'add failed - wrong parameter', 'code' => http_response_code()
+                'message' => 'add failed - wrong parameter',
+                'code' => http_response_code()
             )
         );
     }
@@ -71,7 +74,8 @@ if ($request == 'POST') {
     http_response_code(405);
     $response = array(
         'status' => array(
-            'message' => 'method not allowed', 'code' => http_response_code()
+            'message' => 'method not allowed',
+            'code' => http_response_code()
         )
     );
 }
