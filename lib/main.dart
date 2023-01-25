@@ -93,15 +93,15 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
-// import 'package:neurist_mobile/presentation/pages/device_page.dart';
+import 'package:neurist_mobile/presentation/pages/device_page.dart';
 // import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 // import './customs/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neurist_mobile/presentation/blocs/member_bloc/member_bloc.dart';
-// import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
-import 'package:neurist_mobile/presentation/pages/main_page.dart';
+// import 'package:neurist_mobile/presentation/blocs/member_bloc/member_bloc.dart';
+import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
+// import 'package:neurist_mobile/presentation/pages/main_page.dart';
 
-import '_injector.dart' as di;
+import 'injector.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -119,9 +119,9 @@ class Neurist extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => di.sl<MemberBloc>()
+          create: (_) => di.sl<DeviceBloc>()
             ..add(
-              const MemberFetchEvent(),
+              const DeviceFetchEvent(),
             ),
         ),
         // BlocProvider(
@@ -134,7 +134,7 @@ class Neurist extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark(),
         home: const DoubleBack(
-          child: MainPage(),
+          child: DevicePage(),
         ),
       ),
     );
