@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:neurist_mobile/data/models/device_model.dart';
 
@@ -50,6 +52,11 @@ class DeviceCardWidget extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
+          GestureDetector(
+              onTap: () {
+                log("show: ${device.id}");
+              },
+              child: const Icon(Icons.delete)),
         ],
       ),
     );

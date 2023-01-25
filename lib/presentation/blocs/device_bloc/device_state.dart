@@ -42,3 +42,12 @@ class DeviceErrorState extends DeviceState {
   @override
   List<Object?> get props => [message];
 }
+
+class DeviceDeleteState extends DeviceState {
+  const DeviceDeleteState({required this.result});
+
+  final bool result;
+
+  @override
+  List<Object?> get props => [result];
+}
