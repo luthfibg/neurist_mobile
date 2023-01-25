@@ -118,18 +118,18 @@ class Neurist extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(
-        //   create: (_) => di.sl<MemberBloc>()
-        //     ..add(
-        //       const MemberFetchEvent(),
-        //     ),
-        // ),
         BlocProvider(
           create: (_) => di.sl<DeviceBloc>()
             ..add(
               const DeviceFetchEvent(),
             ),
         ),
+        // BlocProvider(
+        //   create: (_) => di.sl<DeviceBloc>()
+        //     ..add(
+        //       const DeviceFetchEvent(),
+        //     ),
+        // ),
       ],
       child: MaterialApp(
         theme: ThemeData.dark(),
