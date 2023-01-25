@@ -1,5 +1,3 @@
-// import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:neurist_mobile/data/models/device_model.dart';
 
@@ -41,8 +39,8 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
   Future<bool> delete({required int id}) async {
     try {
       final response = await dio.delete(
-          'http://192.168.1.4/neurist_mobile_server/api/device/fetch',
-          data: {id: id});
+          'http://192.168.1.4/neurist_mobile_server/api/device/delete',
+          data: {"id": id});
       if (response.statusCode == 200 && response.data.toString().isNotEmpty) {
         return true;
       } else {

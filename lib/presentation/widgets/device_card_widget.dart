@@ -1,7 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neurist_mobile/data/models/device_model.dart';
+import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
 
 class DeviceCardWidget extends StatelessWidget {
   const DeviceCardWidget({super.key, required this.device});
@@ -54,7 +54,10 @@ class DeviceCardWidget extends StatelessWidget {
           ),
           GestureDetector(
               onTap: () {
-                log("show: ${device.id}");
+                context
+                    .read<DeviceBloc>()
+                    .add(DeviceDeleteEvent(id: device.id));
+                context.read<DeviceBloc>().add(const DeviceFetchEvent());
               },
               child: const Icon(Icons.delete)),
         ],
