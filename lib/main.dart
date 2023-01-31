@@ -94,14 +94,26 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:neurist_mobile/presentation/pages/device_page.dart';
+import 'package:neurist_mobile/presentation/pages/insert_device_page.dart';
+import 'package:neurist_mobile/presentation/pages/main_page.dart';
+// import 'package:neurist_mobile/presentation/pages/service_page.dart';
+
 // import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 // import './customs/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:neurist_mobile/presentation/blocs/member_bloc/member_bloc.dart';
 import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
+import 'package:neurist_mobile/presentation/pages/member_page.dart';
+import 'package:neurist_mobile/presentation/pages/service_page.dart';
 // import 'package:neurist_mobile/presentation/pages/main_page.dart';
 
 import 'injector.dart' as di;
+
+List<String> tabTitles = <String>[
+  'Members',
+  'Devices',
+  'Services',
+];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -134,7 +146,60 @@ class Neurist extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark(),
         home: const DoubleBack(
-          child: DevicePage(),
+          child: MainApp(),
+        ),
+      ),
+    );
+  }
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const int tabsCount = 3;
+
+    return DefaultTabController(
+      initialIndex: 1,
+      length: tabsCount,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Neurist'),
+          notificationPredicate: (ScrollNotification notification) {
+            return notification.depth == 1;
+          },
+          scrolledUnderElevation: 4.0,
+          shadowColor: Theme.of(context).shadowColor,
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                icon: const Icon(Icons.people_alt_outlined),
+                text: tabTitles[0],
+              ),
+              Tab(
+                icon: const Icon(Icons.devices),
+                text: tabTitles[1],
+              ),
+              Tab(
+                icon: const Icon(Icons.build_circle),
+                text: tabTitles[2],
+              ),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            Scaffold(
+              body: MemberPage(),
+            ),
+            Scaffold(
+              body: DevicePage(),
+            ),
+            Scaffold(
+              body: ServicePage(),
+            ),
+          ],
         ),
       ),
     );

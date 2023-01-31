@@ -25,8 +25,8 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
   Future<List<DeviceModel>> fetch() async {
     try {
       List<DeviceModel> listDevice = [];
-      final response = await dio
-          .get('http://192.168.1.4/neurist_mobile_server/api/device/fetch');
+      final response = await dio.get(
+          'http://192.168.1.6/neurist_mobile_server/api/device/fetch'); //192.168.1.4
 
       for (var data in response.data['data']) {
         DeviceModel device = DeviceModel.fromJson(data);
@@ -55,7 +55,7 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
     try {
       List<DeviceModel> listDevice = [];
       final response = await dio.get(
-          'http://192.168.1.4/neurist_mobile_server/api/device/get',
+          'http://192.168.1.6/neurist_mobile_server/api/device/get.php?id=2',
           queryParameters: {
             'id': id,
             'name': name,
@@ -126,7 +126,7 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
   Future<bool> delete({required int id}) async {
     try {
       final response = await dio.delete(
-          'http://192.168.1.4/neurist_mobile_server/api/device/delete',
+          'http://192.168.1.6/neurist_mobile_server/api/device/delete',
           data: {"id": id});
       if (response.statusCode == 200 && response.data.toString().isNotEmpty) {
         return true;
