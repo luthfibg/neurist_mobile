@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class InsertDevice extends StatelessWidget {
-  const InsertDevice({super.key});
+class ServicePage extends StatelessWidget {
+  const ServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class InsertDevice extends StatelessWidget {
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(18),
-          child: const Text('This is insert form page!'),
+          child: const Text('This is from Service Page!'),
         ),
       ),
     );
