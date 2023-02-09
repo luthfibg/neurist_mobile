@@ -6,10 +6,10 @@ import 'package:neurist_mobile/data/models/service_model.dart';
 abstract class ServiceRemoteDataSource {
   Future<List<ServiceModel>> fetch();
   Future<List<ServiceModel>> get({
-    int? id,
-    String? name,
-    int? value,
-    String? status,
+    int? serviceId,
+    String? serviceName,
+    String? serviceAddress,
+    String? servicePhone,
   });
   // Future<Map<String, dynamic>> insert();
   // Future<ServiceModel> update();
@@ -47,20 +47,20 @@ class ServiceRemoteDataSourceImpl implements ServiceRemoteDataSource {
 
   @override
   Future<List<ServiceModel>> get({
-    int? id,
-    String? name,
-    int? value,
-    String? status,
+    int? serviceId,
+    String? serviceName,
+    String? serviceAddress,
+    String? servicePhone,
   }) async {
     try {
       List<ServiceModel> listService = [];
       final response = await dio.get(
-          'http://192.168.1.6/neurist_mobile_server/api/service/get.php?id=$id',
+          'http://192.168.1.6/neurist_mobile_server/api/service/get.php?id=$serviceId',
           queryParameters: {
-            'id': id,
-            'name': name,
-            'value': value,
-            'status': status,
+            'serviceId': serviceId,
+            'serviceName': serviceName,
+            'serviceAddress': serviceAddress,
+            'servicePhone': servicePhone,
           });
 
       if (response.statusCode == 200 && response.data.toString().isNotEmpty) {

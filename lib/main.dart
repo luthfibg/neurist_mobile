@@ -103,6 +103,7 @@ import 'package:neurist_mobile/presentation/pages/device_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neurist_mobile/presentation/blocs/member_bloc/member_bloc.dart';
 import 'package:neurist_mobile/presentation/blocs/device_bloc/device_bloc.dart';
+import 'package:neurist_mobile/presentation/blocs/service_bloc/service_bloc.dart';
 import 'package:neurist_mobile/presentation/pages/member_page.dart';
 import 'package:neurist_mobile/presentation/pages/service_page.dart';
 // import 'package:neurist_mobile/presentation/pages/main_page.dart';
@@ -140,6 +141,12 @@ class Neurist extends StatelessWidget {
           create: (_) => di.sl<MemberBloc>()
             ..add(
               const MemberFetchEvent(),
+            ),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<ServiceBloc>()
+            ..add(
+              const ServiceFetchEvent(),
             ),
         ),
       ],

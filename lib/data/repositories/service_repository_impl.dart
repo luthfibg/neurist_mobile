@@ -12,16 +12,20 @@ class ServiceRepositoryImpl implements ServiceRepository {
     return await serviceRemoteDataSource.fetch();
   }
 
-  // @override
-  // Future<List<ServiceModel>> get({
-  //   int? serviceId,
-  //   String? serviceName,
-  //   String? serviceAddress,
-  //   String? servicePhone,
-  // }) async {
-  //   return await serviceRemoteDataSource.get(
-  //       serviceId: serviceId, serviceName: serviceName, serviceAddress: serviceAddress, servicePhone: servicePhone);
-  // }
+  @override
+  Future<List<ServiceModel>> get({
+    int? serviceId,
+    String? serviceName,
+    String? serviceAddress,
+    String? servicePhone,
+  }) async {
+    return await serviceRemoteDataSource.get(
+      serviceId: serviceId,
+      serviceName: serviceName,
+      serviceAddress: serviceAddress,
+      servicePhone: servicePhone,
+    );
+  }
 
   @override
   Future<bool> delete({required int serviceId}) async {
