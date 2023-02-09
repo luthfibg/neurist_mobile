@@ -20,10 +20,11 @@ class ServiceRepositoryImpl implements ServiceRepository {
     String? servicePhone,
   }) async {
     return await serviceRemoteDataSource.get(
-        serviceId: serviceId,
-        serviceName: serviceName,
-        serviceAddress: serviceAddress,
-        servicePhone: servicePhone);
+      serviceId: serviceId,
+      serviceName: serviceName,
+      serviceAddress: serviceAddress,
+      servicePhone: servicePhone,
+    );
   }
 
   @override
