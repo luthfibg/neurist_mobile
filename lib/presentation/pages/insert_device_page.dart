@@ -6,6 +6,9 @@ class InsertDevice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Data Insertion'),
+      ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(18),

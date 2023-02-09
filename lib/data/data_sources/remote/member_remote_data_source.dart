@@ -17,7 +17,7 @@ class MemberRemoteDataSourceImpl implements MemberRemoteDataSource {
     try {
       List<MemberModel> listMember = [];
       final response = await dio
-          .get('http://192.168.1.4/neurist_mobile_server/api/member/fetch');
+          .get('http://192.168.1.5/neurist_mobile_server/api/member/fetch');
 
       for (var data in response.data['data']) {
         MemberModel member = MemberModel.fromJson(data);
