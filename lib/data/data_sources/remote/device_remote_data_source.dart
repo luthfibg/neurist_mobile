@@ -26,7 +26,7 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
     try {
       List<DeviceModel> listDevice = [];
       final response = await dio.get(
-          'http://192.168.1.6/neurist_mobile_server/api/device/fetch'); //192.168.1.4
+          'http://192.168.1.5/neurist_mobile_server/api/device/fetch'); //192.168.1.4
 
       for (var data in response.data['data']) {
         DeviceModel device = DeviceModel.fromJson(data);
@@ -55,7 +55,7 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
     try {
       List<DeviceModel> listDevice = [];
       final response = await dio.get(
-          'http://192.168.1.6/neurist_mobile_server/api/device/get.php?id=2',
+          'http://192.168.1.6/neurist_mobile_server/api/device/get.php?id=$id',
           queryParameters: {
             'id': id,
             'name': name,
@@ -82,14 +82,18 @@ class DeviceRemoteDataSourceImpl implements DeviceRemoteDataSource {
     }
   }
 
-  //   @override
+  // @override
   // Future<Map<String, dynamic>> insert() async {
   //   try {
-  //     Map<String, String>? device;
-  //     final response = await dio
-  //         .post('http://192.168.1.4/neurist_mobile_server/api/device/add');
-
-  //     return device;
+  //     Map<String, dynamic>? device;
+  //     final response = await dio.post(
+  //         'http://192.168.1.6/neurist_mobile_server/api/device/add',
+  //         queryParameters: device);
+  //     if (response.statusCode == 200 && response.data.toString().isEmpty) {
+  //       return response.headers.map;
+  //     } else {
+  //       return false;
+  //     }
   //   } on DioError catch (e) {
   //     throw (DioError(
   //       requestOptions: e.requestOptions,

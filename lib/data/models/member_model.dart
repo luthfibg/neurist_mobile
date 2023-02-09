@@ -9,7 +9,7 @@ class MemberModel extends MemberEntity {
           name: json['name'],
           age: json['age'],
           address: json['address'],
-          serviceId: json['serviceId'],
+          serviceid: json['serviceid'],
           phone: json['phone'],
           email: json['email'],
         );
@@ -21,7 +21,7 @@ class MemberModel extends MemberEntity {
           'name': name,
           'age': age,
           'address': address,
-          'serviceId': serviceId,
+          'serviceid': serviceid,
           'phone': phone,
           'email': email,
         },
