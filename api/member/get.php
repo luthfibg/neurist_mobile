@@ -27,7 +27,7 @@ if ($request == 'GET') {
             'name' => $member->name,
             'age' => $member->age,
             'address' => $member->address,
-            'service_id' => $member->serviceId,
+            'i' => $member->serviceid,
             'phone' => $member->phone,
             'email' => $member->email,
         );

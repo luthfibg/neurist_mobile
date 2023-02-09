@@ -24,7 +24,7 @@ if ($request == 'POST') {
         !empty($data->name) &&
         !empty($data->age) &&
         !empty($data->address) &&
-        !empty($data->serviceId) &&
+        !empty($data->serviceid) &&
         !empty($data->phone) &&
         !empty($data->email)
     ) {
@@ -32,7 +32,7 @@ if ($request == 'POST') {
         $member->name = $data->name;
         $member->age = $data->age;
         $member->address = $data->address;
-        $member->serviceId = $data->serviceId;
+        $member->serviceid = $data->serviceid;
         $member->phone = $data->phone;
         $member->email = $data->email;
 
@@ -41,7 +41,7 @@ if ($request == 'POST') {
             'name' => $member->name,
             'age' => $member->age,
             'address' => $member->address,
-            'serviceId' => $member->serviceId,
+            'serviceid' => $member->serviceid,
             'phone' => $member->phone,
             'email' => $member->email,
         );
