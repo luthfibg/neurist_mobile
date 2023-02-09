@@ -15,20 +15,21 @@ $conn = $db->connection();
 
 $service = new Service($conn);
 $data = json_decode(file_get_contents("php://input"));
-$service->service_id = $data->service_id;
+$service->serviceId = $data->serviceId;
 
 $response = [];
 
 if ($request == 'DELETE') {
     if (
-        !empty($data->service_id)
+        !empty($data->serviceId)
     ) {
-        $service->service_id = $data->service_id;
+        $service->serviceId = $data->serviceId;
 
         if ($service->delete()) {
             $response = array(
                 'status' => array(
-                    'message' => 'delete service success', 'code' => (http_response_code(200))
+                    'message' => 'delete service success',
+                    'code' => (http_response_code(200))
                 )
             );
         } else {
@@ -51,7 +52,8 @@ if ($request == 'DELETE') {
     http_response_code(405);
     $response = array(
         'status' => array(
-            'message' => 'service method not allowed', 'code' => http_response_code()
+            'message' => 'service method not allowed',
+            'code' => http_response_code()
         )
     );
 }

@@ -2,10 +2,10 @@
 
 class Service
 {
-    public $service_id;
-    public $service_name;
-    public $service_address;
-    public $service_phone;
+    public $serviceId;
+    public $serviceName;
+    public $serviceAddress;
+    public $servicePhone;
 
     private $conn;
     private $table = 'services';
@@ -25,29 +25,29 @@ class Service
 
     function get()
     {
-        $query = "SELECT * FROM " . $this->table . " s WHERE s.service_id = ? LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table . " s WHERE s.serviceId = ? LIMIT 0,1";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->service_id);
+        $stmt->bindParam(1, $this->serviceId);
 
         $stmt->execute();
 
         $service = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $this->service_id = $service['service_id'];
-        $this->service_name = $service['service_name'];
-        $this->service_address = $service['service_address'];
-        $this->service_phone = $service['service_phone'];
+        $this->serviceId = $service['serviceId'];
+        $this->serviceName = $service['serviceName'];
+        $this->serviceAddress = $service['serviceAddress'];
+        $this->servicePhone = $service['servicePhone'];
     }
 
     function add()
     {
-        $query = "INSERT INTO " . $this->table . " SET service_id=:service_id, service_name=:service_name, service_address=:service_address, service_phone=:service_phone";
+        $query = "INSERT INTO " . $this->table . " SET serviceId=:serviceId, serviceName=:serviceName, serviceAddress=:serviceAddress, servicePhone=:servicePhone";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam('service_id', $this->service_id);
-        $stmt->bindParam('service_name', $this->service_name);
-        $stmt->bindParam('service_address', $this->service_address);
-        $stmt->bindParam('service_phone', $this->service_phone);
+        $stmt->bindParam('serviceId', $this->serviceId);
+        $stmt->bindParam('serviceName', $this->serviceName);
+        $stmt->bindParam('serviceAddress', $this->serviceAddress);
+        $stmt->bindParam('servicePhone', $this->servicePhone);
 
         if ($stmt->execute()) {
             return true;
@@ -58,14 +58,14 @@ class Service
 
     function update()
     {
-        $query = "UPDATE " . $this->table . " SET service_name=:service_name, service_address=:service_address, service_phone=:service_phone WHERE service_id=:service_id";
+        $query = "UPDATE " . $this->table . " SET serviceName=:serviceName, serviceAddress=:serviceAddress, servicePhone=:servicePhone WHERE serviceId=:serviceId";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bindParam('service_id', $this->service_id);
-        $stmt->bindParam('service_name', $this->service_name);
-        $stmt->bindParam('service_address', $this->service_address);
-        $stmt->bindParam('service_phone', $this->service_phone);
+        $stmt->bindParam('serviceId', $this->serviceId);
+        $stmt->bindParam('serviceName', $this->serviceName);
+        $stmt->bindParam('serviceAddress', $this->serviceAddress);
+        $stmt->bindParam('servicePhone', $this->servicePhone);
 
         if ($stmt->execute()) {
             return true;
@@ -76,9 +76,9 @@ class Service
 
     function delete()
     {
-        $query = "DELETE FROM " . $this->table . " WHERE service_id=?";
+        $query = "DELETE FROM " . $this->table . " WHERE serviceId=?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->service_id);
+        $stmt->bindParam(1, $this->serviceId);
 
         if ($stmt->execute()) {
             return true;

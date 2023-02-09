@@ -25,22 +25,25 @@ if ($request == 'GET') {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $data[] = array(
-                "service_id" => $service_id,
-                "service_name" => $service_name,
-                "service_address" => $service_address,
-                "service_phone" => $service_phone,
+                "serviceId" => $serviceId,
+                "serviceName" => $serviceName,
+                "serviceAddress" => $serviceAddress,
+                "servicePhone" => $servicePhone,
             );
         }
         $response = array(
             'status' => array(
-                'message' => 'success', 'code' => http_response_code(200)
-            ), 'data' => $data
+                'message' => 'success',
+                'code' => http_response_code(200)
+            ),
+            'data' => $data
         );
     } else {
         http_response_code(404);
         $response = array(
             'status' => array(
-                'message' => 'no data found', 'code' => http_response_code()
+                'message' => 'no data found',
+                'code' => http_response_code()
             )
         );
     }
@@ -48,7 +51,8 @@ if ($request == 'GET') {
     http_response_code(405);
     $response = array(
         'status' => array(
-            'message' => 'method not allowed', 'code' => http_response_code()
+            'message' => 'method not allowed',
+            'code' => http_response_code()
         )
     );
 }

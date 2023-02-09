@@ -16,34 +16,36 @@ $conn = $db->connection();
 $service = new Service($conn);
 
 $data = json_decode(file_get_contents("php://input"));
-$service->service_id = $data->service_id;
+$service->serviceId = $data->serviceId;
 
 $response = [];
 
 if ($request == 'PUT') {
     if (
-        !empty($data->service_id) &&
-        !empty($data->service_name) &&
-        !empty($data->service_address) &&
-        !empty($data->service_phone)
+        !empty($data->serviceId) &&
+        !empty($data->serviceName) &&
+        !empty($data->serviceAddress) &&
+        !empty($data->servicePhone)
     ) {
-        $service->service_id = $data->service_id;
-        $service->service_name = $data->service_name;
-        $service->service_address = $data->service_address;
-        $service->service_phone = $data->service_phone;
+        $service->serviceId = $data->serviceId;
+        $service->serviceName = $data->serviceName;
+        $service->serviceAddress = $data->serviceAddress;
+        $service->servicePhone = $data->servicePhone;
 
         $data = array(
-            'service_id' => $service->service_id,
-            'service_name' => $service->service_name,
-            'service_address' => $service->service_address,
-            'service_phone' => $service->service_phone,
+            'serviceId' => $service->serviceId,
+            'serviceName' => $service->serviceName,
+            'serviceAddress' => $service->serviceAddress,
+            'servicePhone' => $service->servicePhone,
         );
 
         if ($service->update()) {
             $response = array(
                 'status' => array(
-                    'message' => 'success', 'code' => (http_response_code(200))
-                ), 'data' => $data
+                    'message' => 'success',
+                    'code' => (http_response_code(200))
+                ),
+                'data' => $data
             );
         } else {
             http_response_code(400);
