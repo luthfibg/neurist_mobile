@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:neurist_mobile/data/models/member_model.dart';
 import 'package:neurist_mobile/domain/use_cases/fetch_member_use_case.dart';
+import 'package:neurist_mobile/domain/use_cases/delete_member_use_case.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'member_event.dart';
@@ -16,11 +17,15 @@ EventTransformer<Event> debounce<Event>(Duration duration) {
 }
 
 class MemberBloc extends Bloc<MemberEvent, MemberState> {
-  MemberBloc({required this.fetchMemberUseCase}) : super(MemberInitialState()) {
+  MemberBloc(
+      {required this.fetchMemberUseCase, required this.deleteMemberUseCase})
+      : super(MemberInitialState()) {
     on<MemberFetchEvent>(_fetch, transformer: debounce(_duration));
+    on<MemberDeleteEvent>(_delete, transformer: debounce(_duration));
   }
 
   final FetchMemberUseCase fetchMemberUseCase;
+  final DeleteMemberUseCase deleteMemberUseCase;
 
   /// This method is used as a listener fetch event.
   ///
@@ -31,6 +36,16 @@ class MemberBloc extends Bloc<MemberEvent, MemberState> {
     try {
       final listMember = await fetchMemberUseCase.call();
       emit(MemberFetchedState(listMember: listMember));
+    } catch (error) {
+      emit(MemberErrorState(message: error.toString()));
+    }
+  }
+
+  void _delete(MemberDeleteEvent event, Emitter<MemberState> emit) async {
+    try {
+      int id = event.id;
+      final result = await deleteMemberUseCase.call(id: id);
+      emit(MemberDeleteState(result: result));
     } catch (error) {
       emit(MemberErrorState(message: error.toString()));
     }

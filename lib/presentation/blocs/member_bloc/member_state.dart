@@ -42,3 +42,12 @@ class MemberErrorState extends MemberState {
   @override
   List<Object?> get props => [message];
 }
+
+class MemberDeleteState extends MemberState {
+  const MemberDeleteState({required this.result});
+
+  final bool result;
+
+  @override
+  List<Object?> get props => [result];
+}

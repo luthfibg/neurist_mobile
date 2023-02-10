@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neurist_mobile/data/models/member_model.dart';
+import 'package:neurist_mobile/presentation/blocs/member_bloc/member_bloc.dart';
 
 class MemberCardWidget extends StatelessWidget {
   const MemberCardWidget({super.key, required this.member});
@@ -51,9 +53,13 @@ class MemberCardWidget extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           GestureDetector(
-            onTap: () {},
-            child: const Icon(Icons.textsms_outlined),
-          )
+              onTap: () {
+                context
+                    .read<MemberBloc>()
+                    .add(MemberDeleteEvent(id: member.id));
+                context.read<MemberBloc>().add(const MemberFetchEvent());
+              },
+              child: const Icon(Icons.delete)),
         ],
       ),
     );

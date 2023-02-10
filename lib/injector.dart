@@ -23,6 +23,8 @@ import 'package:neurist_mobile/domain/use_cases/fetch_service_use_case.dart';
 import 'package:neurist_mobile/domain/use_cases/delete_service_use_case.dart';
 import 'package:neurist_mobile/presentation/blocs/service_bloc/service_bloc.dart';
 
+import 'domain/use_cases/delete_member_use_case.dart';
+
 /// Initialize sl as a service locator.
 final sl = GetIt.instance;
 
@@ -58,14 +60,15 @@ Future<void> init() async {
   ///
   // Member part
   // registering service locator for [MemberBloc].
-  sl.registerFactory(() => MemberBloc(fetchMemberUseCase: sl()));
+  sl.registerFactory(
+      () => MemberBloc(fetchMemberUseCase: sl(), deleteMemberUseCase: sl()));
 
   // usecases
   // registering service locator for [FetchMemberUseCase].
   sl.registerLazySingleton(() => FetchMemberUseCase(memberRepository: sl()));
 
   // registering service locator for [DeleteMemberUseCase].
-  // sl.registerLazySingleton(() => DeleteMemberUseCase(memberRepository: sl()));
+  sl.registerLazySingleton(() => DeleteMemberUseCase(memberRepository: sl()));
 
   // repositories
   // registering service locator for [MemberRepository].

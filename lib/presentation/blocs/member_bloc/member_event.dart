@@ -1,6 +1,6 @@
 part of 'member_bloc.dart';
 
-/// Abstract class to accommodate Member event conditions.
+/// Abstract class to accommodate member event conditions.
 abstract class MemberEvent extends Equatable {
   const MemberEvent();
 
@@ -14,4 +14,12 @@ class MemberFetchEvent extends MemberEvent {
 
   @override
   List<Object> get props => [];
+}
+
+class MemberDeleteEvent extends MemberEvent {
+  final int id;
+  const MemberDeleteEvent({required this.id});
+
+  @override
+  List<Object> get props => [id];
 }
