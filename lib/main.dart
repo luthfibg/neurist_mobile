@@ -137,12 +137,12 @@ class Neurist extends StatelessWidget {
               const DeviceFetchEvent(),
             ),
         ),
-        BlocProvider(
-          create: (_) => di.sl<MemberBloc>()
-            ..add(
-              const MemberFetchEvent(),
-            ),
-        ),
+        // BlocProvider(
+        //   create: (_) => di.sl<MemberBloc>()
+        //     ..add(
+        //       const MemberFetchEvent(),
+        //     ),
+        // ),
         BlocProvider(
           create: (_) => di.sl<ServiceBloc>()
             ..add(
@@ -197,9 +197,9 @@ class MainApp extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Scaffold(
-              body: MemberPage(),
-            ),
+            // Scaffold(
+            //   body: MemberPage(),
+            // ),
             Scaffold(
               body: DevicePage(),
             ),
