@@ -29,7 +29,7 @@ if ($request == 'GET') {
                 "name" => $name,
                 "age" => $age,
                 "address" => $address,
-                "serviceid" => $serviceid,
+                "serviceId" => $serviceId,
                 "phone" => $phone,
                 "email" => $email,
             );
