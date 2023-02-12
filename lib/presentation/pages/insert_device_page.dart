@@ -60,6 +60,22 @@ class _InsertDeviceState extends State<InsertDevice> {
                     hintText: 'Status',
                   ),
                 ),
+                const SizedBox(
+                  width: 100,
+                  height: 20,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size.fromHeight(50),
+                  ),
+                  onPressed: (() {}),
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
               ],
             )),
       ),
