@@ -30,9 +30,8 @@ class DeviceCardWidget extends StatelessWidget {
                   Radius.circular(5),
                 ),
                 image: DecorationImage(
-                  image: Image.network(
-                    'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0347d890-b837-475f-a1eb-850d09e7bd28/air-force-1-07-shoes-x9rqBh.png',
-                  ).image,
+                  image:
+                      Image.asset('assets/images/amazfit_gtr2e_a_V.png').image,
                   fit: BoxFit.contain,
                 ),
               ),
