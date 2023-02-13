@@ -30,8 +30,8 @@ class ServiceCardWidget extends StatelessWidget {
                   Radius.circular(5),
                 ),
                 image: DecorationImage(
-                  image: Image.network(
-                    'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0347d890-b837-475f-a1eb-850d09e7bd28/air-force-1-07-shoes-x9rqBh.png',
+                  image: Image.asset(
+                    'assets/images/hardware.png',
                   ).image,
                   fit: BoxFit.contain,
                 ),
@@ -49,8 +49,12 @@ class ServiceCardWidget extends StatelessWidget {
           Text(
             service.serviceAddress,
             style: const TextStyle(fontSize: 14),
-            maxLines: 2,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
+          ),
+          const Text(
+            'Detail',
+            style: TextStyle(fontSize: 14),
           ),
           GestureDetector(
               onTap: () {
