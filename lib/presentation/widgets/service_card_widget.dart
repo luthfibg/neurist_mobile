@@ -49,8 +49,12 @@ class ServiceCardWidget extends StatelessWidget {
           Text(
             service.serviceAddress,
             style: const TextStyle(fontSize: 14),
-            maxLines: 2,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
+          ),
+          const Text(
+            'Detail',
+            style: TextStyle(fontSize: 14),
           ),
           GestureDetector(
               onTap: () {

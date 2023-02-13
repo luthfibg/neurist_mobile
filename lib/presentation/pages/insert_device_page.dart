@@ -1,3 +1,4 @@
+import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 
 class InsertDevice extends StatefulWidget {
@@ -12,7 +13,8 @@ class _InsertDeviceState extends State<InsertDevice> {
   Widget build(BuildContext context) {
     TextEditingController controllerName = TextEditingController();
     TextEditingController controllerValue = TextEditingController();
-    TextEditingController controllerStatus = TextEditingController();
+    SingleValueDropDownController controllerStatus =
+        SingleValueDropDownController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Data Insertion'),
@@ -52,13 +54,33 @@ class _InsertDeviceState extends State<InsertDevice> {
                   width: 100,
                   height: 20,
                 ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
+                DropDownTextField(
                   controller: controllerStatus,
-                  decoration: const InputDecoration(
+                  clearOption: true,
+                  textFieldDecoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Status',
                   ),
+                  validator: (value) {
+                    if (value == null) {
+                      return "Required field";
+                    } else {
+                      return null;
+                    }
+                  },
+                  dropDownItemCount: 2,
+                  dropDownList: const [
+                    DropDownValueModel(
+                      name: 'Idle',
+                      value: 'idle',
+                      toolTipMsg: 'Ketika perangkat tersedia untuk digunakan',
+                    ),
+                    DropDownValueModel(
+                      name: 'Rented',
+                      value: 'rented',
+                      toolTipMsg: 'Ketika perangkat sedang disewa',
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   width: 100,
